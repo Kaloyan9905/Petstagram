@@ -1,0 +1,111 @@
+{% load static %}
+
+{% for photo in all_photos %}
+    <!-- Start First Pet Photo Post -->
+    <div class="card">
+
+        <!-- Start User Details and Image Location -->
+        <div class="top">
+            <div class="userDetails">
+                <!-- Link to User Profile Page -->
+                <a href="#">
+                    <div class="profilepic">
+                        <div class="profile_img">
+                            <div class="image">
+                                <img src="{% static 'images/person.png' %}" alt="img8">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <h3>
+                    <!-- Link to User Profile Page -->
+                    <a href="#">
+                        <!-- if user has first name and last name -->
+                        Diyan Kalaydzhiev
+                        <!-- else -->
+                        <!-- show user username -->
+                    </a>
+                    <br>
+                    <!-- if the photo has location -->
+                    {% if photo.location %}
+                        <span>{{ photo.location }}</span>
+                    {% endif %}
+                </h3>
+            </div>
+        </div>
+        <!-- End User Details and Image Location -->
+
+        <!-- Start Pet Photo -->
+        <div class="imgBx" id="{{ photo.id }}">
+            <img src="{{ photo.photo.url }}" alt="post" class="cover">
+        </div>
+        <!-- End Pet Photo -->
+
+        <!-- Start Like and Share Buttons -->
+        <div class="bottom">
+            <div class="actionBtns">
+                <div class="left">
+                    <!-- Start Like Button -->
+                    <span class="heart">
+                                <a href="{% url 'like' photo.id %}">
+                                    <!-- if user has liked the photo -->
+                                    {% if photo.like_set.all %}
+                                        <i class="fa-solid fa-heart" style="color: #ed4040;"></i>
+                                        <!-- else -->
+                                    {% else %}
+                                        <i class="fa-regular fa-heart"></i>
+                                    {% endif %}
+                                </a>
+
+                            </span>
+                    <!-- End Like Button -->
+
+                    <!-- Start Share Button -->
+                    <a href="{% url 'share' photo.id %}">
+                        <i class="fa-solid fa-share"></i>
+                    </a>
+                    <!-- End Share Button -->
+
+                </div>
+            </div>
+            <!-- End Like and Share Buttons -->
+
+            <!-- Number of Likes per Photo -->
+            <p class="likes">Likes: {{ photo.like_set.count }}</p>
+
+            <!-- Start Tagged Pets -->
+            {% for pet in photo.tagged_pets.all %}
+                <!-- Link to First Tagged Pet Details Page-->
+                <a href="{% url 'pet-details' "username" pet.slug %}">
+                    <p class="message">
+                        <b>{{ pet.name }}</b>
+                    </p>
+                </a>
+            {% endfor %}
+            <!-- End Tagged Pets -->
+
+            <!-- Link to Photo Details Page -->
+            <a href="{% url 'photo-details' photo.pk %}">
+                <h4 class="details">See details</h4>
+            </a>
+
+            <!-- Date of Publication -->
+            <h5 class="postTime">{{ pet.date_of_publication }}</h5>
+
+            <!-- Start Add Comments Section -->
+            <div class="addComments">
+                <!-- Start Add Comments Form -->
+                <form method="post" action="{% url 'comment' photo.id %}">
+                    {% csrf_token %}
+                    {{ comment_form }}
+                    <button type="submit">Post</button>
+                </form>
+                <!-- End Add Comments Form -->
+
+            </div>
+            <!-- End Add Comments Section -->
+
+        </div>
+    </div>
+    <!-- End First Pet Photo Post -->
+{% endfor %}

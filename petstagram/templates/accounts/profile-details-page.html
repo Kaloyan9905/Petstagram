@@ -1,77 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-<!-- Starts Head Section -->
-<head>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link rel="icon" type="image/x-icon" href="{% static 'images/free-30-instagram-stories-icons23_122570.png' %}">
-    {#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"#}
-    {#          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="#}
-    {#          crossorigin="anonymous" referrerpolicy="no-referrer"/>#}
-    <title>Petstagram</title>
-</head>
-<!-- End Head Section -->
-
-<!-- Starts Body Section -->
-<body>
-
-<!-- Starts Header Section with Navigation Bar -->
-<header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <!-- Link to Home Page -->
-                <a href="#">
-                    <img width="50px" src="{% static 'images/free-30-instagram-stories-icons23_122570.png' %}"
-                         alt="img1">
-                </a>
-
-                <!-- Link to Home Page -->
-                <a class="home" href="#">
-                    <i>Petstagram</i>
-                </a>
-            </div>
-
-            <div class="nav-links">
-                <ul class="nav-group">
-                    <li class="nav-item">
-
-                        <!-- Link to Add Pet Page -->
-                        <a href="#">
-                            <i>Add Pet</i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-
-                        <!-- Link to Add Photo Page -->
-                        <a href="#">
-                            <i>Add Photo</i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-
-                        <!-- Link to Profile Page -->
-                        <a href="#">
-                            <i>Profile</i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-
-                        <!-- Log out -->
-                        <a href="#">
-                            <i>Log out</i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-<!-- End Header Section with Navigation Bar -->
-
-<!-- Starts Main Section -->
-<main>
 
     <!-- Start Profile Details Section -->
     <div class="profile">
@@ -277,28 +206,7 @@
         </div>
         <!-- End Last Uploaded Photos Section -->
 
-        <!-- IF NO Posts Show No Post Image -->
-
-        <img
-                class="no-posts"
-                src="/static/images/no_posts.png"
-                alt="no posts"
-        />
-
     </div>
     <!-- End Profile Details Section -->
 
-</main>
-<!-- End Main Section -->
-
-<!-- Start Footer Section -->
-<div class="footer">
-		<span class="footer-section">
-			© 2024 SOFTUNI WORKSHOP FOR PYTHON WEB MODULE
-		</span>
-</div>
-s
-<!-- End Footer Section -->
-
-</body>
-</html>
+{% endblock %}

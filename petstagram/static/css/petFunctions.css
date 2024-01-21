@@ -19,7 +19,6 @@
 	height:55vh;
 }
 
-
 .edit-delete h2 {
 	text-align: center;
 	margin-top: -10px;
@@ -60,9 +59,9 @@
 	color: white;
 }
 
-.edit-photo select {
+/* .edit-photo select {
 
-}
+} */
 
 .edit-photo label {
 	display: initial !important;
