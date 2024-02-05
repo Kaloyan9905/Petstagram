@@ -1,5 +1,5 @@
 from django.views import generic as views
-from django.shortcuts import redirect, resolve_url, render
+from django.shortcuts import redirect, resolve_url
 from pyperclip import copy
 
 from petstagram.common.forms import CommentForm, SearchForm
