@@ -16,7 +16,7 @@ class HomePageView(views.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['comment_form'] = CommentForm()
-        context['search_form'] = SearchForm(self.request.GET or None)
+        context['search_form'] = SearchForm(self.request.GET)
         return context
 
     def get_queryset(self):
@@ -24,9 +24,19 @@ class HomePageView(views.ListView):
         pet_name = self.request.GET.get('pet_name')
 
         if pet_name:
-            queryset = queryset.filter(tagged_pets__name__icontains=pet_name)
+            self.request.session['pet_name'] = pet_name
+        else:
+            self.request.session.pop('pet_name', None)
+
+        pet_name_session = self.request.session.get('pet_name')
+
+        if pet_name:
+            queryset = queryset.filter(tagged_pets__name__icontains=pet_name_session)
 
         return queryset
+
+
+
 
 
 def like_functionality(request, photo_id):
