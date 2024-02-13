@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-{% load static %}
+    {% load static %}
 
     <div class="container">
         <div class="col-9">
 
             <!-- Start Searchbar Form -->
-            <form class="searchbar" method="post">
+            <form class="searchbar" method="get">
                 {% csrf_token %}
                 {{ search_form }}
                 <button>
@@ -16,6 +16,53 @@
             <!-- End Searchbar Form -->
 
             {% include 'common/pet-posts.html' %}
+
+            <!-- Start Pagination -->
+            <div class="pagination">
+                <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+
+                <span class="step-links-buttons">
+
+                    <!-- If there are previous and next photos -->
+                    {% if page_obj.has_previous and page_obj.has_next %}
+                        <a href="?page={{ page_obj.previous_page_number }}
+                             {% if request.GET.pet_name %}
+                                   &pet_name={{ request.GET.pet_name }}
+                             {% endif %}">
+                                 <i class="fa-solid fa-arrow-left"></i>
+                             </a>
+
+                        <a href="?page={{ page_obj.next_page_number }}
+                             {% if request.GET.pet_name %}
+                                  &pet_name={{ request.GET.pet_name }}
+                             {% endif %}">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    <!-- If there are only previous photos -->
+                    {% elif page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}
+                             {% if request.GET.pet_name %}
+                                  &pet_name={{ request.GET.pet_name }}
+                             {% endif %}">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </a>
+
+                    <!-- If there are only next photos -->
+                    {% elif page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}
+                              {% if request.GET.pet_name %}
+                                   &pet_name={{ request.GET.pet_name }}
+                              {% endif %}">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    {% endif %}
+
+                </span>
+            </div>
+            <!-- End Pagination -->
 
         </div>
     </div>
