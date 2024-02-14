@@ -5,28 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8866f30-56e0-4569-be53-75f3a0333266" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9cc1d69b-4fba-4e50-81bf-047bcdc64577.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9cc1d69b-4fba-4e50-81bf-047bcdc64577.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9cc1d69b-4fba-4e50-81bf-047bcdc64577/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9cc1d69b-4fba-4e50-81bf-047bcdc64577/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/petstagram.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/petstagram.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/petstagram.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/petstagram/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/accounts/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petstagram/accounts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/accounts/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/petstagram/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/accounts/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/petstagram/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/accounts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/petstagram/common/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/petstagram/common/migrations/0002_alter_comment_options.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/petstagram/pets/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/petstagram/pets/migrations/0002_alter_pet_slug.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/petstagram/photos/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/petstagram/photos/migrations/0002_alter_photo_photo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/petstagram/photos/migrations/0003_alter_photo_photo.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/petstagram/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/accounts/login-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/login-page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/accounts/register-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/register-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +32,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -115,7 +104,10 @@
       <workItem from="1707407101293" duration="2367000" />
       <workItem from="1707852381304" duration="58000" />
       <workItem from="1707852451361" duration="2437000" />
-      <workItem from="1707854916177" duration="2324000" />
+      <workItem from="1707854916177" duration="3106000" />
+      <workItem from="1707940349878" duration="505000" />
+      <workItem from="1707941112175" duration="1253000" />
+      <workItem from="1707942471660" duration="8312000" />
     </task>
     <servers />
   </component>
@@ -132,15 +124,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/petstagram/accounts/views.py</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

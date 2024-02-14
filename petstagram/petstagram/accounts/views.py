@@ -19,7 +19,10 @@ class AppUserRegisterView(views.CreateView):
 class AppUserLoginView(auth_views.LoginView):
     form_class = AppUserLoginForm
     template_name = 'accounts/login-page.html'
-    success_url = reverse_lazy('home')
+
+
+class AppUserLogoutView(auth_views.LogoutView):
+    pass
 
 
 def show_profile_details(request, pk):

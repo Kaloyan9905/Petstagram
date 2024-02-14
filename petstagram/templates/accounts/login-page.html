@@ -11,10 +11,8 @@
             <!-- Start Login Form-->
             <form method="post">
                 {% csrf_token %}
-                {{ form.email|placeholder:"Email" }}
-                {{ form.email.errors }}
+                {{ form.username|placeholder:"Email" }}
                 {{ form.password|placeholder:"Password" }}
-                {{ form.password.errors }}
 
                 <!-- Login Button-->
                 <button type="submit">Log in</button>

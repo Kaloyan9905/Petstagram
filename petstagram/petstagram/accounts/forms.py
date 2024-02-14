@@ -1,6 +1,6 @@
+from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django import forms
 
 UserModel = get_user_model()
 
@@ -12,9 +12,11 @@ class AppUserCreationForm(UserCreationForm):
 
 
 class AppUserLoginForm(AuthenticationForm):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'autofocus': True}))
+    username = forms.EmailField(widget=forms.TextInput(attrs={'autofocus': True}))
     password = forms.CharField(
         label="Password",
         strip=False,
         widget=forms.PasswordInput(attrs={'autocomplete': 'current-password'}),
     )
+
+
