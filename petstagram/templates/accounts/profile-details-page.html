@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-{% load static %}
+    {% load static %}
 
     <!-- Start Profile Details Section -->
     <div class="profile">
@@ -21,7 +21,7 @@
 
                     <!-- IF the viewer is the owner of the profile -->
                     <!-- Link to Edit Profile Page -->
-                    <a href="#">
+                    <a href="{% url 'profile-edit' request.user.pk %}">
                         <img class="edit-img" src="{% static 'images/edit-pen-icon-6.jpg' %}" alt="edit button">
                     </a>
 
