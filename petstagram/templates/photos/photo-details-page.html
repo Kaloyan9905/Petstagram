@@ -13,11 +13,15 @@
                     <div class="userDetails">
 
                         <!-- Link to User Profile Details Page-->
-                        <a href="#">
+                        <a href="{% url 'profile-details' photo.user.profile.pk %}">
                             <div class="profilepic">
                                 <div class="profile_img">
                                     <div class="image">
-                                        <img src="{% static '/images/person.png' %}" alt="img8">
+                                        {% if photo.user.profile.profile_picture %}
+                                            <img src="{{ photo.user.profile.profile_picture }}" alt="">
+                                        {% else %}
+                                            <img src="{% static '/images/person.png' %}" alt="img8">
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -25,9 +29,9 @@
                         <h3>
 
                             <!-- Link to User Profile Details Page -->
-                            <a href="#">
+                            <a href="{% url 'profile-details' photo.user.profile.pk %}">
                                 <!-- IF user has first name and last name -->
-                                Diyan Kalaydzhiev
+                                {{ photo.user.profile.get_username }}
                                 <!-- else -->
                                 <!-- show user username -->
                             </a>
@@ -39,21 +43,23 @@
                             {% endif %}
 
                             <!-- IF the viewer is the creator of the photo -->
-                            <div class="edit-delete-btns">
+                            {% if request.user.pk == photo.user.pk %}
+                                <div class="edit-delete-btns">
 
-                                <!-- Link to Edit Pet Photo Page -->
-                                <a href="{% url 'edit-photo' photo.pk %}">
-                                    <img class="edit-img" src="{% static '/images/edit-pen-icon-6.jpg' %}"
-                                         alt="edit button">
-                                </a>
+                                    <!-- Link to Edit Pet Photo Page -->
+                                    <a href="{% url 'edit-photo' photo.pk %}">
+                                        <img class="edit-img" src="{% static '/images/edit-pen-icon-6.jpg' %}"
+                                             alt="edit button">
+                                    </a>
 
-                                <!-- Link to Delete Pet Photo Page -->
-                                <a href="{% url 'delete-photo' photo.pk %}">
-                                    <img class="bin-img" src="{% static '/images/icon-remove-22.jpg' %}"
-                                         alt="bin button">
-                                </a>
-                            </div>
-                            <!-- End IF the viewer is the creator of the photo -->
+                                    <!-- Link to Delete Pet Photo Page -->
+                                    <a href="{% url 'delete-photo' photo.pk %}">
+                                        <img class="bin-img" src="{% static '/images/icon-remove-22.jpg' %}"
+                                             alt="bin button">
+                                    </a>
+                                </div>
+                                <!-- End IF the viewer is the creator of the photo -->
+                            {% endif %}
 
                         </h3>
                     </div>
@@ -147,18 +153,18 @@
                     {% endfor %}
                 </div>
 
-            <!-- Start Add Comments Section -->
-            <div class="addComments">
-                <!-- Start Add Comments Form -->
-                <form method="post" action="{% url 'comment' photo.id %}">
-                    {% csrf_token %}
-                    {{ comment_form }}
-                    <button type="submit">Post</button>
-                </form>
-                <!-- End Add Comments Form -->
+                <!-- Start Add Comments Section -->
+                <div class="addComments">
+                    <!-- Start Add Comments Form -->
+                    <form method="post" action="{% url 'comment' photo.id %}">
+                        {% csrf_token %}
+                        {{ comment_form }}
+                        <button type="submit">Post</button>
+                    </form>
+                    <!-- End Add Comments Form -->
 
-            </div>
-            <!-- End Add Comments Section -->
+                </div>
+                <!-- End Add Comments Section -->
 
             </div>
             <!-- End Pet Photo Post Section -->

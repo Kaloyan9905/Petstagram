@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth import views as auth_views
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic as views
 
@@ -22,11 +22,6 @@ class AppUserLoginView(auth_views.LoginView):
     form_class = AppUserLoginForm
     template_name = 'accounts/login-page.html'
 
-    def form_valid(self, form):
-        super().form_valid(form)
-        profile_instance, _ = Profile.objects.get_or_create(user=self.request.user)
-        return HttpResponseRedirect(self.get_success_url())
-
 
 class AppUserLogoutView(auth_views.LogoutView):
     pass
@@ -35,6 +30,14 @@ class AppUserLogoutView(auth_views.LogoutView):
 class AppUserDetailView(views.DetailView):
     model = UserModel
     template_name = 'accounts/profile-details-page.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['total_likes_count'] = \
+            sum(p.like_set.count() for p in self.object.photo_set.all())
+
+        return context
 
 
 class ProfileEditView(views.UpdateView):
@@ -52,5 +55,15 @@ class ProfileEditView(views.UpdateView):
         )
 
 
-def delete_profile(request, pk):
-    return render(request, template_name='accounts/profile-delete-page.html')
+class AppUserDeleteView(views.DeleteView):
+    model = UserModel
+    template_name = 'accounts/profile-delete-page.html'
+    success_url = reverse_lazy('home')
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def delete(self, request, *args, **kwargs):
+        user = self.get_object()
+        user.delete()
+        return redirect(self.get_success_url())

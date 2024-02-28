@@ -18,7 +18,6 @@ def add_photo(request):
 def show_photo_details(request, pk):
     photo = Photo.objects.get(pk=pk)
     likes = photo.like_set.all()
-    photo_is_liked_by_user = likes.filter(user=request.user)
     comments = photo.comment_set.all()
     comment_form = CommentForm()
 
@@ -27,7 +26,6 @@ def show_photo_details(request, pk):
         'likes': likes,
         'comments': comments,
         'comment_form': comment_form,
-        'photo_is_liked_by_user': photo_is_liked_by_user,
     }
 
     return render(request, template_name='photos/photo-details-page.html', context=context)
