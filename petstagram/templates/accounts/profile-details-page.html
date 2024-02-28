@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-{% load static %}
+    {% load static %}
 
     <!-- Start Profile Details Section -->
     <div class="profile">
@@ -11,24 +11,30 @@
                 <div class="image">
 
                     <!-- Profile Image -->
-                    <img src="{% static 'images/person.png' %}" alt="img8">
+                    {% if object.profile.profile_picture %}
+                        <img src="{{ object.profile.profile_picture }}" alt="img8">
+                    {% else %}
+                        <img src="{% static 'images/person.png' %}" alt="img8">
+                    {% endif %}
                 </div>
             </div>
             <div class="personal">
                 <div class="edit">
                     <!-- User Username -->
-                    <p>d_kalaydzhiev</p>
+                    <p>{{ object.profile.get_username }}</p>
 
                     <!-- IF the viewer is the owner of the profile -->
-                    <!-- Link to Edit Profile Page -->
-                    <a href="#">
-                        <img class="edit-img" src="{% static 'images/edit-pen-icon-6.jpg' %}" alt="edit button">
-                    </a>
+                    {% if object.pk == request.user.pk %}
+                        <!-- Link to Edit Profile Page -->
+                        <a href="{% url 'profile-edit' request.user.pk %}">
+                            <img class="edit-img" src="{% static 'images/edit-pen-icon-6.jpg' %}" alt="edit button">
+                        </a>
 
-                    <!-- Link to Delete Profile Page -->
-                    <a href="">
-                        <img class="bin-img" src="{% static 'images/icon-remove-22.jpg' %}" alt="bin button">
-                    </a>
+                        <!-- Link to Delete Profile Page -->
+                        <a href="{% url 'profile-delete' request.user.pk %}">
+                            <img class="bin-img" src="{% static 'images/icon-remove-22.jpg' %}" alt="bin button">
+                        </a>
+                    {% endif %}
                     <!-- End IF the viewer is the owner of the profile -->
 
                 </div>
@@ -43,14 +49,20 @@
                     <p>pets</p>
 
                     <!-- Total Number of Likes for the User -->
-                    <span>436</span>
+                    <span>{{ total_likes_count }}</span>
                     <p>likes</p>
                 </div>
                 <!-- User First and Last Name IF Added -->
-                <h3 class="names">Diyan Kalaydziev</h3>
+                {% if object.first_name and object.last_name %}
+                    <h3 class="names">{{ object.profile.first_name }} {{ object.profile.last_name }}</h3>
+                {% elif object.first_name %}
+                    <h3 class="names">{{ object.profile.first_name }}</h3>
+                {% elif object.last_name %}
+                    <h3 class="names">{{ object.profile.last_name }}</h3>
+                {% endif %}
 
                 <!-- User Email Address -->
-                <p class="email">d.denov@gmail.com</p>
+                <p class="email">{{ object.email }}</p>
 
                 <!-- User Gender IF Added -->
                 <p class="gender">Male</p>
